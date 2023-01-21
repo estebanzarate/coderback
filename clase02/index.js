@@ -34,8 +34,6 @@ productManager.addProduct({
 	stock: 25
 });
 
-// El objeto debe agregarse satisfactoriamente con un id generado automáticamente SIN REPETIRSE
-
 // Se llamará el método “getProducts” nuevamente, esta vez debe aparecer el producto recién agregado
 console.error(productManager.getProducts());
 
