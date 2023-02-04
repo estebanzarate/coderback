@@ -26,22 +26,34 @@ class ProductManager {
 		}
 	};
 	getProductById = async id => {
-		this.products = await this.getProducts();
-		return this.products.find(product => product.id === id);
+		try {
+			this.products = await this.getProducts();
+			return this.products.find(product => product.id === id);
+		} catch (error) {
+			return error;
+		}
 	};
 	updateProduct = async (id, data) => {
-		this.products = await this.getProducts();
-		let prodToUpd = this.products.find(prod => prod.id === id);
-		if (!prodToUpd) return 'Product not found';
-		let prodIndex = this.products.findIndex(prod => prod.id === id);
-		this.products[prodIndex] = { ...prodToUpd, ...data };
-		await fs.promises.writeFile(this.path, JSON.stringify(this.products));
-		return 'Product updated successfully';
+		try {
+			this.products = await this.getProducts();
+			let prodToUpd = this.products.find(prod => prod.id === id);
+			if (!prodToUpd) return 'Product not found';
+			let prodIndex = this.products.findIndex(prod => prod.id === id);
+			this.products[prodIndex] = { ...prodToUpd, ...data };
+			await fs.promises.writeFile(this.path, JSON.stringify(this.products));
+			return 'Product updated successfully';
+		} catch (error) {
+			return error;
+		}
 	};
 	deleteProduct = async id => {
-		this.products = await this.getProducts();
-		this.products = this.products.filter(prod => prod.id !== id);
-		await fs.promises.writeFile(this.path, JSON.stringify(this.products));
+		try {
+			this.products = await this.getProducts();
+			this.products = this.products.filter(prod => prod.id !== id);
+			await fs.promises.writeFile(this.path, JSON.stringify(this.products));
+		} catch (error) {
+			return error;
+		}
 	};
 }
 
