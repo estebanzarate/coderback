@@ -7,13 +7,13 @@ class ProductManager {
 	}
 	addProduct = async product => {
 		try {
-			this.products = JSON.parse(await fs.promises.readFile(this.path, 'utf-8'));
+			this.products = await this.getProducts();
 			const id =
 				this.products.length === 0 ? 1 : this.products[this.products.length - 1].id + 1;
 			this.products.push({ id, ...product });
-			await fs.promises.writeFile(this.path, JSON.stringify(this.products));
-			return 'Product added successfully';
+			return await fs.promises.writeFile(this.path, JSON.stringify(this.products));
 		} catch (error) {
+			fs.writeFileSync(this.path, JSON.stringify(this.products));
 			return error;
 		}
 	};
@@ -26,11 +26,11 @@ class ProductManager {
 		}
 	};
 	getProductById = async id => {
-		this.products = JSON.parse(await fs.promises.readFile(this.path, 'utf-8'));
-		return this.products.find(product => product.id === id) || 'Not Found';
+		this.products = await this.getProducts();
+		return this.products.find(product => product.id === id);
 	};
 	updateProduct = async (id, data) => {
-		this.products = JSON.parse(await fs.promises.readFile(this.path, 'utf-8'));
+		this.products = await this.getProducts();
 		let prodToUpd = this.products.find(prod => prod.id === id);
 		if (!prodToUpd) return 'Product not found';
 		let prodIndex = this.products.findIndex(prod => prod.id === id);
@@ -39,9 +39,8 @@ class ProductManager {
 		return 'Product updated successfully';
 	};
 	deleteProduct = async id => {
-		this.products = JSON.parse(await fs.promises.readFile(this.path, 'utf-8'));
-		this.products = this.products.filter(prod => prod.id !== id);
-		return 'Product removed succesfully';
+		this.products = await this.getProducts();
+		return this.products.filter(prod => prod.id !== id);
 	};
 }
 
