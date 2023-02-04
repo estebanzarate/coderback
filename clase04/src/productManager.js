@@ -40,7 +40,8 @@ class ProductManager {
 	};
 	deleteProduct = async id => {
 		this.products = await this.getProducts();
-		return this.products.filter(prod => prod.id !== id);
+		this.products = this.products.filter(prod => prod.id !== id);
+		await fs.promises.writeFile(this.path, JSON.stringify(this.products));
 	};
 }
 
