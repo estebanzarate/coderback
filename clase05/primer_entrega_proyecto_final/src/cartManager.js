@@ -24,6 +24,14 @@ class CartManager {
 			return this.products;
 		}
 	};
+	getCartById = async id => {
+		try {
+			this.carts = await this.getCarts();
+			return this.carts.find(cart => cart.id === id);
+		} catch (error) {
+			return error;
+		}
+	};
 }
 
 module.exports = CartManager;
