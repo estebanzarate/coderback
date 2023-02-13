@@ -28,12 +28,12 @@
 	},
 	{
 		"id": 4,
-		"title": "producto prueba5",
+		"title": "title updated",
 		"description": "Este es un producto prueba",
 		"price": 200,
 		"thumbnail": "Sin imagen",
 		"code": "abc123",
-		"stock": 25
+		"stock": 1000
 	},
 	{
 		"id": 5,

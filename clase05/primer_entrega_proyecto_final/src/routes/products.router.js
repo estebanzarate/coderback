@@ -22,7 +22,10 @@ router.post('/', async (req, res) => {
 	res.status(200).json({ message: 'Product added successfully' });
 });
 
-router.put('/:pid', async (req, res) => {});
+router.put('/:pid', async (req, res) => {
+	await productManager.updateProduct(Number(req.params.pid), req.body);
+	res.status(200).json({ message: 'Product updated successfully' });
+});
 
 router.delete('/:pid', async (req, res) => {});
 
