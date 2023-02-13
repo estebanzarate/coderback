@@ -9,11 +9,14 @@ router.post('/', async (req, res) => {
 });
 
 router.get('/:cid', async (req, res) => {
-	const cart = await cartManager.getCartById(Number(req.params.cid));
-	if (!cart) return res.status(404).json({ message: '[!] Cart not found' });
-	res.status(200).json(cart);
+	const products = await cartManager.getProdsByCartId(Number(req.params.cid));
+	if (!products) return res.status(404).json({ message: '[!] Cart not found' });
+	res.status(200).json({ products });
 });
 
-router.post('/:cid/product/:pid', (req, res) => {});
+router.post('/:cid/product/:pid', async (req, res) => {
+	await cartManager.addProdToCart(Number(req.params.cid), Number(req.params.pid));
+	res.status(200).json({ message: 'Product added successfully' });
+});
 
 module.exports = router;
