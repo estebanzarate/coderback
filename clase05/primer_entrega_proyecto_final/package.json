@@ -1,0 +1,18 @@
+{
+	"name": "clase04",
+	"version": "1.0.0",
+	"description": "Desafío entregable Servidor con Express",
+	"main": "index.js",
+	"scripts": {
+		"dev": "nodemon src/app.js"
+	},
+	"keywords": [
+		"node",
+		"express"
+	],
+	"author": "Esteban Zarate",
+	"license": "ISC",
+	"dependencies": {
+		"express": "^4.18.2"
+	}
+}

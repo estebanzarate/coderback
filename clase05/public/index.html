@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>HOME</title>
+    </head>
+
+    <body>
+        <h2>Agregar mascota</h2>
+        <form action='/api/pets' method='post'>
+            <input type="text" name='name'>
+            <input type="text" name='breed'>
+            <input type="submit" value="Crear Mascota">
+        </form>
+        <h2>Agregar usuario</h2>
+        <form action='/api/users' method='post'>
+            <input type="text" name='fullname'>
+            <input type="email" name='email'>
+            <input type="password" name='password'>
+            <input type="file" name="profile">
+            <input type="submit" value="Crear Usuario">
+        </form>
+    </body>
+
+</html>
