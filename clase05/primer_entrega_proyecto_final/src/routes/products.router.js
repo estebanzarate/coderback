@@ -10,7 +10,12 @@ router.get('/', async (req, res) => {
 	res.status(200).json(products);
 });
 
-router.get('/:pid', async (req, res) => {});
+router.get('/:pid', async (req, res) => {
+	const id = Number(req.params.pid);
+	const product = await productManager.getProductById(id);
+	if (!product) return res.status(404).json({ message: '[!] Product not found' });
+	res.status(200).json(product);
+});
 
 router.post('/', async (req, res) => {});
 
