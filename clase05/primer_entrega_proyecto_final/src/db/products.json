@@ -88,5 +88,27 @@
 		"thumbnail": "Sin imagen",
 		"code": "abc123",
 		"stock": 25
+	},
+	{
+		"id": 11,
+		"title": "Producto nuevo",
+		"description": "Descriptión del producto nuevo",
+		"code": "123456",
+		"price": 500,
+		"status": true,
+		"stock": 50,
+		"category": "categoria",
+		"thumbnails": []
+	},
+	{
+		"id": 12,
+		"title": "Producto nuevo",
+		"description": "Descriptión del producto nuevo",
+		"code": "123456",
+		"price": 500,
+		"status": true,
+		"stock": 50,
+		"category": "categoria",
+		"thumbnails": []
 	}
 ]
